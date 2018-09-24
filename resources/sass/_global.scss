@@ -1,0 +1,23 @@
+.jumbotron--hero {
+	background-position: center center;
+    -webkit-box-shadow: 0 5000px rgba(0,0,0,.6) inset;
+    box-shadow: 0 5000px rgba(0,0,0,.6) inset;
+    background-image: url(/img/hero--children.jpg);
+}
+
+.row--white {
+	background: white
+}
+
+.form-control {
+	border-radius: 0 !important;
+	background-color: #f8fafc !important;
+}
+
+.btn {
+	border-radius: 0 !important
+}
+
+.clear {
+	clear: both
+}
