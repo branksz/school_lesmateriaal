@@ -1,3 +1,24 @@
+@php
+    $nav = [
+        [
+            'slug' => '/',
+            'title' => 'Startpagina',
+        ],
+        [
+            'slug' => '/over-ons',
+            'title' => 'Over ons',
+        ],
+        [
+            'slug' => '/contact',
+            'title' => 'Contact',
+        ],
+        [
+            'slug' => '/inloggen',
+            'title' => 'Inloggen',
+        ],
+    ];
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
