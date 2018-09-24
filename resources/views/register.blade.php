@@ -27,14 +27,14 @@
 						    </div>
 						@endif
 						<div class="form-group">
-							<a href="">Ik heb nog geen account</a>
+							<a href="{{ url('/') }}/inloggen">Klik hier om in te loggen</a>
 							<input type="submit" name="login" class="btn btn-secondary float-right" value="Login" />
 						</div>
 						<div class="clear"></div>
 					</form>
 				</div>
 				<div class="col-12 col-md-4 mt-3">
-					<p>Log hier in om gebruik te maken van het lesmateriaal voor docenten.</p>
+					<p>Meld je hier aan om gebruik te kunnen maken van het lesmateriaal voor docenten.</p>
 					<p>Faucibus conubia nostra diam metus rutrum torquent curae ad, vel nec congue vehicula fringilla aliquam adipiscing ante rhoncus.</p>
 				</div>
 			</div>
