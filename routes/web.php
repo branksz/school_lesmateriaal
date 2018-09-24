@@ -14,3 +14,20 @@
 Route::get('/', function () {
     return view('home');
 });
+
+// Login
+Route::post('/inloggen/checklogin', 'LoginpageController@checklogin');
+Route::get('/inloggen', function () {
+    return view('login');
+});
+
+// register
+Route::post('/aanmelden/validate', 'LoginpageController@validate');
+Route::get('/aanmelden', function () {
+    return view('register');
+});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
