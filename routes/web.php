@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('home');
 });
 
+Auth::routes();
+
 // Login
 Route::post('/inloggen/checklogin', 'LoginpageController@checklogin');
 Route::get('/inloggen', function () {
@@ -22,12 +24,7 @@ Route::get('/inloggen', function () {
 });
 
 // register
-Route::post('/aanmelden/validate', 'LoginpageController@validate');
+Route::post('/aanmelden/validate', 'LoginpageController@checkregistration');
 Route::get('/aanmelden', function () {
     return view('register');
 });
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

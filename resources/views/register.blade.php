@@ -8,7 +8,7 @@
 		<div class="col-12 offset-md-1 col-md-10">
 			<div class="row row--white pb-3">
 				<div class="col-12 offset-md-1 col-md-6">
-					<form method="post" action="{{ url('/inloggen/checklogin') }}" class="mt-2">
+					<form method="post" action="{{ url('/aanmelden/validate') }}" class="mt-2">
 						{{ csrf_field() }}
 
 						<div class="form-group">
