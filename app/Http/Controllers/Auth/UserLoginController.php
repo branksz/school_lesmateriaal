@@ -47,6 +47,27 @@ class UserLoginController extends Controller
      */
     public function validateRegistration(Request $request)
     {
-        
+        $this->middleware('guest');
+
+        $validate = Validator::make($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        if ($validate) {
+        	$createUser = User::create([
+        	    'name'     => $request->get('name'),
+        	    'email'    => $request->get('email'),
+        	    'role'     => 'school',
+        	    'password' => Hash::make($request->get('password')),
+        	]);
+
+        	if ($createUser) {
+        		return 'JA VRO';
+        	}
+        }
+
+        return 'NEE VRO';
     }
 }
