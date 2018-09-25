@@ -1,24 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 use Validator;
 use Redirect;
 use Auth;
 
-class LoginpageController extends Controller
+class UserLoginController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('login');
-    }
-
     /**
      * De user proberen in de loggen en anders error terug sturen
      *
@@ -53,7 +45,7 @@ class LoginpageController extends Controller
      *
      * @param $request
      */
-    public function checkregistration(Request $request)
+    public function validateRegistration(Request $request)
     {
         
     }

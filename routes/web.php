@@ -18,13 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 // Login
-Route::post('/inloggen/checklogin', 'LoginpageController@checklogin');
+Route::post('/inloggen/checklogin', 'Auth\UserLoginController@checkLogin');
 Route::get('/inloggen', function () {
     return view('login');
 });
 
 // register
-Route::post('/aanmelden/validate', 'LoginpageController@checkregistration');
+Route::post('/aanmelden/validate', 'Auth\UserLoginController@validateRegistration');
 Route::get('/aanmelden', function () {
     return view('register');
 });
