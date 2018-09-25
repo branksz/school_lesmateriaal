@@ -19,6 +19,11 @@ class LoginpageController extends Controller
         return view('login');
     }
 
+    /**
+     * De user proberen in de loggen en anders error terug sturen
+     *
+     * @param $request
+     */
     public function checklogin(Request $request)
     {
         // validate request
@@ -41,5 +46,15 @@ class LoginpageController extends Controller
         // default error
         return Redirect::back()->withErrors(['De gebruikersnaam en wachtwoord komen niet overeen']);
 
+    }
+
+    /**
+     * De user registreren in de DB met de juiste rol
+     *
+     * @param $request
+     */
+    public function checkregistration(Request $request)
+    {
+        
     }
 }
