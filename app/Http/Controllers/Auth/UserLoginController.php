@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\User;
 
 use Validator;
 use Redirect;
@@ -47,27 +49,31 @@ class UserLoginController extends Controller
      */
     public function validateRegistration(Request $request)
     {
-        $this->middleware('guest');
-
-        $validate = Validator::make($request, [
+        // validatie van de data
+        $data = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'schoolName' => 'required|string|min:2',
+            'city' => 'required|string|min:2',
             'password' => 'required|string|min:6|confirmed',
         ]);
 
-        if ($validate) {
-        	$createUser = User::create([
-        	    'name'     => $request->get('name'),
-        	    'email'    => $request->get('email'),
-        	    'role'     => 'school',
-        	    'password' => Hash::make($request->get('password')),
-        	]);
-
-        	if ($createUser) {
-        		return 'JA VRO';
-        	}
+        try {
+            // user aanmaken
+            User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'schoolName' => $data['schoolName'],
+                'city' => $data['city'],
+                'password' => Hash::make($data['password']),
+            ]);
+        } catch (\Exception $exception) {
+            // error terugsturen
+            logger()->error($exception);
+            return Redirect::back()->withErrors(['Er ging iets fout, probeer het later opnieuw']);
         }
 
-        return 'NEE VRO';
+        // redirect naar login pagina
+        return redirect('inloggen');
     }
 }
