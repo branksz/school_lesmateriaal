@@ -26,6 +26,13 @@
 						    	</ul>
 						    </div>
 						@endif
+						@if (session()->has('success'))
+						    <div class="alert alert-success">
+						     	<ul class="list-unstyled pl-0 mb-0">
+						     		<li>{{ session()->get('success') }}</li>
+						    	</ul>
+						    </div>
+						@endif
 						<div class="form-group">
 							<a href="{{ url('/') }}/aanmelden">Ik heb nog geen account</a>
 							<input type="submit" name="login" class="btn btn-secondary float-right" value="Login" />
