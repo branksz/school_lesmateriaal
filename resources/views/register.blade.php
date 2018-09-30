@@ -14,51 +14,42 @@
 					    <div class="form-group">
 					        <label for="name">Naam</label>
 					        <input id="name" type="text" class="form-control" name="name" required autofocus />
-
-				            @if ($errors->has('name'))
-				                <span class="invalid-feedback" role="alert">
-				                    <strong>{{ $errors->first('name') }}</strong>
-				                </span>
-				            @endif
 					    </div>
 
 					    <div class="form-group">
 					        <label for="email">E-mail</label>
 					        <input id="email" type="email" class="form-control" name="email" required />
-
-				            @if ($errors->has('email'))
-				                <span class="invalid-feedback" role="alert">
-				                    <strong>{{ $errors->first('email') }}</strong>
-				                </span>
-				            @endif
 					    </div>
 
 					    <div class="form-group">
 					        <label for="schoolName">Schoolnaam</label>
 					        <input id="schoolName" type="text" class="form-control" name="schoolName" required />
+					    </div>
 
-				            @if ($errors->has('schoolName'))
-				                <span class="invalid-feedback" role="alert">
-				                    <strong>{{ $errors->first('schoolName') }}</strong>
-				                </span>
-				            @endif
+					    <div class="form-group">
+					        <label for="city">Stad</label>
+					        <input id="city" type="text" class="form-control" name="city" required />
 					    </div>
 
 					    <div class="form-group">
 					        <label for="password">Wachtwoord</label>
 					        <input id="password" type="password" class="form-control" name="password" required />
-
-				            @if ($errors->has('password'))
-				                <span class="invalid-feedback" role="alert">
-				                    <strong>{{ $errors->first('password') }}</strong>
-				                </span>
-				            @endif
 					    </div>
 
 					    <div class="form-group">
 					        <label for="password_confirmation">Wachtwoord Nogmaals</label>
 					        <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required />
 					    </div>
+
+			    		@if ($errors->any())
+			    		    <div class="alert alert-danger">
+			    		     	<ul class="list-unstyled pl-0 mb-0">
+			    		     		@foreach ($errors->all() as $error)
+			    		     			<li>{{ $error }}</li>
+			    		     		@endforeach
+			    		    	</ul>
+			    		    </div>
+			    		@endif
 
 					    <div class="form-group">
 				        	<a href="{{ url('/') }}/inloggen">Klik hier om in te loggen</a>
