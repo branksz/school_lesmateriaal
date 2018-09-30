@@ -13,22 +13,22 @@
 
 					    <div class="form-group">
 					        <label for="name">Naam</label>
-					        <input id="name" type="text" class="form-control" name="name" required autofocus />
+					        <input id="name" type="text" class="form-control" name="name" @if(!empty(old('name')))value="{{ old('name') }}"@endif required autofocus />
 					    </div>
 
 					    <div class="form-group">
 					        <label for="email">E-mail</label>
-					        <input id="email" type="email" class="form-control" name="email" required />
+					        <input id="email" type="email" class="form-control" name="email" @if(!empty(old('email')))value="{{ old('email') }}"@endif required />
 					    </div>
 
 					    <div class="form-group">
 					        <label for="schoolName">Schoolnaam</label>
-					        <input id="schoolName" type="text" class="form-control" name="schoolName" required />
+					        <input id="schoolName" type="text" class="form-control" name="schoolName" @if(!empty(old('schoolName')))value="{{ old('schoolName') }}"@endif required />
 					    </div>
 
 					    <div class="form-group">
 					        <label for="city">Stad</label>
-					        <input id="city" type="text" class="form-control" name="city" required />
+					        <input id="city" type="text" class="form-control" name="city" @if(!empty(old('city')))value="{{ old('city') }}"@endif required />
 					    </div>
 
 					    <div class="form-group">

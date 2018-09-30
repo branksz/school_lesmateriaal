@@ -74,6 +74,6 @@ class UserLoginController extends Controller
         }
 
         // redirect naar login pagina
-        return redirect('inloggen');
+        return redirect('inloggen')->with('success', 'Registratie is gelukt, u kunt nu inloggen');
     }
 }
