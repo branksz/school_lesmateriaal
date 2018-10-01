@@ -15,6 +15,15 @@
 						</div>
 					</div>
 					<div class="row mt-3">
+						@if (session()->has('success'))
+							<div class="col-12">
+							    <div class="alert alert-success">
+							     	<ul class="list-unstyled pl-0 mb-0">
+							     		<li>{{ session()->get('success') }}</li>
+							    	</ul>
+							    </div>
+							</div>
+						@endif
 						<div class="col-sm-6 col-lg-3">
 							<h5>Naam</h5>
 							<p>{{ $user['name'] }}</p>
