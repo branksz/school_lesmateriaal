@@ -1,7 +1,10 @@
 <div class="jumbotron jumbotron--hero p-5 mb-0">
 	<div class="container">
 		<div class="col-12 offset-md-1 col-md-10">
-			<h1 class="text-white"><strong>{{ $title }}</strong></h1>
+			<h1 class="text-white d-inline-block"><strong>{{ $title }}</strong></h1>
+			@if(!empty($button) && $button == true)
+				<a href="" class="btn btn-primary float-right">Stuur een onderwerp in</a>
+			@endif
 		</div>
 	</div>
 </div>

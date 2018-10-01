@@ -38,7 +38,7 @@ class UserLoginController extends Controller
         }
 
         // default error
-        return Redirect::back()->withErrors(['De gebruikersnaam en wachtwoord komen niet overeen']);
+        return Redirect::back()->withErrors(['De gebruikersnaam en wachtwoord komen niet overeen'])->withInput();
 
     }
 

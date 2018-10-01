@@ -23,6 +23,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>Lesmateriaal</title>
 	<link rel="stylesheet" href="/css/app.css" />
 </head>
@@ -39,5 +40,6 @@
 	</main>
 
 	@include('inc.footer')
+    <script src="/js/app.js"></script>
 </body>
 </html>
