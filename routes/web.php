@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function() {
     return view('home');
 });
 
@@ -19,12 +19,17 @@ Auth::routes();
 
 // Login
 Route::post('/inloggen/checklogin', 'Auth\UserLoginController@checkLogin');
-Route::get('/inloggen', function () {
+Route::get('/inloggen', function() {
     return view('login');
-});
+})->name('inloggen');
 
 // register
 Route::post('/aanmelden/validate', 'Auth\UserLoginController@validateRegistration');
-Route::get('/aanmelden', function () {
+Route::get('/aanmelden', function() {
     return view('register');
 });
+
+// dashboard
+Route::get('/dashboard', function() {
+	return view('dashboard');
+})->middleware('auth');

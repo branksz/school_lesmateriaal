@@ -13,7 +13,7 @@
 
 						<div class="form-group">
 							<label>E-mailadres</label>
-							<input type="email" name="email" class="form-control" />
+							<input type="email" name="email" class="form-control" @if(!empty(old('email')))value="{{ old('email') }}"@endif />
 						</div>
 						<div class="form-group">
 							<label>Wachtwoord</label>
