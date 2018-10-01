@@ -30,6 +30,10 @@ Route::get('/aanmelden', function() {
 });
 
 // dashboard
-Route::get('/dashboard', function() {
-	return view('dashboard');
-})->middleware('auth');
+Route::get('/dashboard', 'DashboardController@index');
+
+// account
+Route::prefix('/account')->group(function () {
+	Route::get('', 'AccountController@index');
+	Route::get('/bewerken', 'AccountController@edit');
+});
