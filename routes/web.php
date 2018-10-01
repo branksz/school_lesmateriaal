@@ -36,4 +36,5 @@ Route::get('/dashboard', 'DashboardController@index');
 Route::prefix('/account')->group(function () {
 	Route::get('', 'AccountController@index');
 	Route::get('/bewerken', 'AccountController@edit');
+	Route::post('/bewerken', 'AccountController@editProfile');
 });
