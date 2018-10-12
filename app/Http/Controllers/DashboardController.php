@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\RequestSubject;
 use DB;
 
 class DashboardController extends Controller
@@ -19,6 +20,7 @@ class DashboardController extends Controller
     	return view('dashboard/index', ['entries' => $entry]);
     }
 
+    // al het materiaal ophalen en terug sturen met view
     public function allMaterial()
     {
         $entries = \DB::table('lessonmaterial')->orderBy('id', 'desc')->limit(null)->get();
@@ -36,5 +38,29 @@ class DashboardController extends Controller
         }
 
         return view('404');
+    }
+
+    // pagina waar je een onderwerp kan insturen
+    public function requestSubject()
+    {
+        return view('dashboard/onderwerp');
+    }
+
+    // pagina waar je een onderwerp kan insturen
+    public function requestSubjectPost(Request $request)
+    {
+        // backend check of subject is ingevuld
+        $request->validate(['subject' => 'required']);
+
+        // nieuwe request aanmaken
+        $subject = new RequestSubject();
+        $subject->subject = $request->get('subject');
+
+        // opslaan
+        if ($subject->save()) {
+            return redirect('/dashboard/onderwerp')->with('success', 'Onderwerp ingestuurd!');
+        } else {
+            return Redirect::back()->withErrors(['Er ging iets mis tijdens het insturen, probeer het later opnieuw']);
+        }
     }
 }
