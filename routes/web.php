@@ -31,6 +31,7 @@ Route::get('/aanmelden', function() {
 
 // dashboard
 Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard/materiaal/{slug}', 'DashboardController@getMaterial');
 
 // account
 Route::prefix('/account')->group(function () {
