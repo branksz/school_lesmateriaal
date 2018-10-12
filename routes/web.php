@@ -30,9 +30,11 @@ Route::get('/aanmelden', function() {
 });
 
 // dashboard
-Route::get('/dashboard', 'DashboardController@index');
-Route::get('/dashboard/materiaal', 'DashboardController@allMaterial');
-Route::get('/dashboard/materiaal/{slug}', 'DashboardController@getMaterial');
+Route::prefix('/dashboard')->group(function () {
+	Route::get('', 'DashboardController@index');
+	Route::get('/materiaal', 'DashboardController@allMaterial');
+	Route::get('/materiaal/{slug}', 'DashboardController@getMaterial');
+});
 
 // account
 Route::prefix('/account')->group(function () {
