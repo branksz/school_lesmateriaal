@@ -25,21 +25,24 @@ class AccountController extends Controller
     	return view('account/edit', ['user' => \Auth::user()]);
     }
 
-    public function editProfile(User $user)
+    public function editProfile(Request $request)
     {
+        // current user erbij pakken
+        $user = Auth::user();
+
     	// de request valideren
-    	$this->validate(request(), [
+    	$request->validate([
     		'name' => 'required',
             'email' => 'unique:users,email,'.\Auth::user()->id.'|required|email',
-    		'schoolName' => 'required',
-    		'city' => 'required'
+            'schoolName' => 'required',
+            'city' => 'required'
     	]);
 
     	// values setten
-    	$user->name = request('name');
-    	$user->email = request('email');
-    	$user->schoolName = request('schoolName');
-    	$user->city = request('city');
+    	$user->name = $request->get('name');
+    	$user->email = $request->get('email');
+    	$user->schoolName = $request->get('schoolName');
+    	$user->city = $request->get('city');
 
     	// opslaan
     	if ($user->save()) {
