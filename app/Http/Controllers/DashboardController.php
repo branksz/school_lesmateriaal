@@ -16,6 +16,13 @@ class DashboardController extends Controller
     public function index()
     {
     	$entry = \DB::table('lessonmaterial')->orderBy('id', 'desc')->limit(3)->get();
-    	return view('dashboard', ['entries' => $entry]);
+    	return view('dashboard/index', ['entries' => $entry]);
+    }
+
+    // lesmateriaal view returnen met lesmateriaal
+    public function getMaterial($slug = null)
+    {
+        $entry = \DB::table('lessonmaterial')->where('slug', $slug)->get();
+        return view('dashboard/_entry', ['entry' => $entry]);
     }
 }
