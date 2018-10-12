@@ -34,6 +34,9 @@ Route::prefix('/dashboard')->group(function () {
 	Route::get('', 'DashboardController@index');
 	Route::get('/materiaal', 'DashboardController@allMaterial');
 	Route::get('/materiaal/{slug}', 'DashboardController@getMaterial');
+
+	Route::get('/onderwerp', 'DashboardController@requestSubject');
+	Route::post('/onderwerp', 'DashboardController@requestSubjectPost');
 });
 
 // account
