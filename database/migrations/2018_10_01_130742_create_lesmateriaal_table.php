@@ -16,6 +16,7 @@ class CreateLesmateriaalTable extends Migration
         Schema::create('lessonmaterial', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('name');
+            $table->string('slug');
             $table->string('introduction');
             $table->string('imagename');
             $table->string('filename');
