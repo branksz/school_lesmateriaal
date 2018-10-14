@@ -23,6 +23,9 @@ Route::get('/inloggen', function() {
     return view('login');
 })->name('inloggen');
 
+// uitloggen
+Route::get('/uitloggen', 'Auth\UserLoginController@logout');
+
 // register
 Route::post('/aanmelden/validate', 'Auth\UserLoginController@validateRegistration');
 Route::get('/aanmelden', function() {
@@ -44,4 +47,19 @@ Route::prefix('/account')->group(function () {
 	Route::get('', 'AccountController@index');
 	Route::get('/bewerken', 'AccountController@edit');
 	Route::post('/bewerken', 'AccountController@editProfile');
+});
+
+// admin
+Route::prefix('/admin')->group(function () {
+	Route::get('/', function() {
+		return view('admin.index');
+	})->name('adminLogin');
+
+	// Login validatie
+	Route::post('/', 'Auth\AdminLoginController@checkLogin');
+
+	// dashboard
+	Route::prefix('/dashboard')->group(function () {
+		Route::get('', 'AdminAccountController@index');
+	});
 });
