@@ -20,7 +20,7 @@
                                 <a class="dropdown-item" href="/account">Mijn profiel</a>
                                 <a class="dropdown-item" href="/account/wachtwoordveranderen">Wachtwoord veranderen</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/logout">Uitloggen</a>
+                                <a class="dropdown-item" href="/uitloggen">Uitloggen</a>
                             </div>
                         </li>
                     @else
