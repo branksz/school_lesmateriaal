@@ -17,6 +17,6 @@ class AdminAccountController extends Controller
     // Dashbaord laden voor admin
     public function index()
     {
-    	return view('admin.dashboard.index');
+    	return view('admin.dashboard');
     }
 }

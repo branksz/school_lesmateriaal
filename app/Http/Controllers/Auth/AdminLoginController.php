@@ -35,7 +35,7 @@ class AdminLoginController extends Controller
         // probeer de user in te loggen
         if (Auth::guard('admin')->attempt($user_data))
         {
-            return redirect('admin');
+            return redirect('admin/dashboard');
         }
 
         // default error
