@@ -16,14 +16,14 @@ class DashboardController extends Controller
     // Dashboard view returnen met lesmateriaal
     public function index()
     {
-    	$entry = \DB::table('lessonmaterial')->orderBy('id', 'desc')->limit(3)->get();
-    	return view('dashboard/index', ['entries' => $entry]);
+    	$entry = \DB::table('lessonmaterial')->where('status', 1)->orderBy('id', 'desc')->limit(3)->get();
+    	return view('dashboard/index', ['entries' => $entry, 'status']);
     }
 
     // al het materiaal ophalen en terug sturen met view
     public function allMaterial()
     {
-        $entries = \DB::table('lessonmaterial')->orderBy('id', 'desc')->limit(null)->get();
+        $entries = \DB::table('lessonmaterial')->where('status', 1)->orderBy('id', 'desc')->limit(null)->get();
         return view('dashboard/allmaterial', ['entries' => $entries]);
     }
 
