@@ -55,8 +55,11 @@ Route::prefix('/admin')->group(function () {
 		return view('admin.index');
 	})->name('adminLogin');
 
-	Route::get('/lesmateriaal', 'AdminAccountController@allMaterial');
-	Route::post('/lesmateriaal/toggleStatus', 'AdminAccountController@toggleStatus');
+	Route::prefix('/lesmateriaal')->group(function () {
+		Route::get('', 'AdminLessonmaterial@allMaterial');
+		Route::post('/status', 'AdminLessonmaterial@toggleStatus');
+		Route::post('/zoeken', 'AdminLessonmaterial@searchMaterial');
+	});
 
 	// Login validatie
 	Route::post('/', 'Auth\AdminLoginController@checkLogin');
