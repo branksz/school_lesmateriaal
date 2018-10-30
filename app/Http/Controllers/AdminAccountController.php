@@ -20,38 +20,4 @@ class AdminAccountController extends Controller
     {
     	return view('admin.dashboard');
     }
-
-    // al het materiaal ophalen en terug sturen met view
-    public function allMaterial()
-    {
-        $entries = \DB::table('lessonmaterial')->orderBy('id', 'desc')->limit(null)->get();
-        return view('admin/allmaterial', ['entries' => $entries]);
-    }
-
-    // status togglen van lesmateriaal op basis van Id
-    public function toggleStatus(Request $request)
-    {
-        // uitlezen id
-        $id = $request->get('id');
-
-        // proberen ophalen van lesmateriaal
-        $entry = \DB::table('lessonmaterial')->where('id', $id)->limit(null)->get();
-
-        // gevonden
-        if ($entry) {
-            $status = 1;
-            if ($entry[0]['status'] == 1) {
-                $status = 0;
-            }
-
-            // update query
-            $query = \DB::table('lessonmaterial')->where('id', $entry[0]['id'])->update(['status' => $status]);
-
-            if ($query) {
-                return redirect('/admin/lesmateriaal');
-            }
-        }
-
-        return redirect('/'); // default als iets fout gaat
-    }
 }
