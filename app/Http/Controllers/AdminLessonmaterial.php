@@ -57,7 +57,7 @@ class AdminLessonmaterial extends Controller
         $status = $request->get('status');
 
         $entries = \DB::table('lessonmaterial')->where([['name', 'LIKE', '%'. $searchTerm .'%']])->orWhere([['introduction', 'LIKE', '%'. $searchTerm .'%']])->orderBy('id', 'desc')->limit(null)->get();
-        if ($status !== null) {
+        if ($status == 1) {
             $entries = \DB::table('lessonmaterial')->where([['name', 'LIKE', '%'. $searchTerm .'%'],['status', '=', 1]])->orWhere([['introduction', 'LIKE', '%'. $searchTerm .'%'],['status', '=', 1]])->orderBy('id', 'desc')->limit(null)->get();
         }
 

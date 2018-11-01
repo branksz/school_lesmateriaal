@@ -12,11 +12,15 @@
 						{{ csrf_field() }}
 
 						<div class="form-group">
-							<input type="text" name="query" class="form-control d-inline" placeholder="Typ hier je zoekterm..." />
+							<input type="text" name="query" class="form-control d-inline" 
+							@if (!empty($searchTerm)) value="{{ $searchTerm }}" @endif
+							 placeholder="Typ hier je zoekterm..." />
 						</div>
 						<div class="form-group">
-							<label for="status">Alleen actief lesmateriaal tonen</label>
-							<input type="checkbox" id="status" name="status" value="1" {{ !empty($status) ? 'checked' : '' }} />
+							<select name="status">
+								<option {{ (!empty($status) && $status) == 1 ? 'selected' : '' }} value="1">Alleen actief tonen</option>
+								<option {{ (!empty($status) && $status) == 0 ? 'selected' : '' }} value="0">Alles tonen</option>
+							</select>
 						</div>
 						<button type="submit" class="btn btn-secondary d-inline"><i class="fa fa-search"></i></button>
 					</form>
