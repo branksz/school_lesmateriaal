@@ -56,9 +56,9 @@ class AdminLessonmaterial extends Controller
         $searchTerm = $request->get('query');
         $status = $request->get('status');
 
-        $entries = \DB::table('lessonmaterial')->where([['name', 'LIKE', '%'. $searchTerm .'%']])->orderBy('id', 'desc')->limit(null)->get();
+        $entries = \DB::table('lessonmaterial')->where([['name', 'LIKE', '%'. $searchTerm .'%']])->orWhere([['introduction', 'LIKE', '%'. $searchTerm .'%']])->orderBy('id', 'desc')->limit(null)->get();
         if ($status !== null) {
-            $entries = \DB::table('lessonmaterial')->where([['name', 'LIKE', '%'. $searchTerm .'%'],['status', '=', 1]])->orderBy('id', 'desc')->limit(null)->get();
+            $entries = \DB::table('lessonmaterial')->where([['name', 'LIKE', '%'. $searchTerm .'%'],['status', '=', 1]])->orWhere([['introduction', 'LIKE', '%'. $searchTerm .'%'],['status', '=', 1]])->orderBy('id', 'desc')->limit(null)->get();
         }
 
         return view('admin/allmaterial', ['entries' => $entries, 'searchTerm' => $searchTerm, 'status' => $status]);

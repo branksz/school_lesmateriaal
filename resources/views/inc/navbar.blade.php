@@ -18,7 +18,6 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropDown">
                                 <h6 class="dropdown-header">{{ Auth::user()->name ?? Auth::guard('admin')->user()->name }}</h6>
                                 <a class="dropdown-item" href="/account">Mijn profiel</a>
-                                <a class="dropdown-item" href="/account/wachtwoordveranderen">Wachtwoord veranderen</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/uitloggen">Uitloggen</a>
                             </div>
