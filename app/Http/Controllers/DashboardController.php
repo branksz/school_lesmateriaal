@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\RequestSubject;
+use App\User;
+use Auth;
 use DB;
 
 class DashboardController extends Controller
@@ -52,15 +55,23 @@ class DashboardController extends Controller
         // backend check of subject is ingevuld
         $request->validate(['subject' => 'required']);
 
+        // user ophalen
+        $user = Auth::user();
+
         // nieuwe request aanmaken
         $subject = new RequestSubject();
         $subject->subject = $request->get('subject');
 
-        // opslaan
-        if ($subject->save()) {
-            return redirect('/dashboard/onderwerp')->with('success', 'Onderwerp ingestuurd!');
-        } else {
+        // checken of de user minimaal 5 dagen aangemeld is
+        if (now()->timestamp - $user->created_at->format('U') >= 432000) {
+            // opslaan
+            if ($subject->save()) {
+                return redirect('/dashboard/onderwerp')->with('success', 'Onderwerp ingestuurd!');
+            }
+
             return Redirect::back()->withErrors(['Er ging iets mis tijdens het insturen, probeer het later opnieuw']);
         }
+
+        return Redirect::back()->withErrors(['Je moet miniaal 5 dagen lid zijn om een onderwerp in te zenden']);
     }
 }
