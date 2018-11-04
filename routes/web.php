@@ -61,6 +61,9 @@ Route::prefix('/admin')->group(function () {
 		Route::post('/zoeken', 'AdminLessonmaterial@searchMaterial');
 	});
 
+	// inzendingen
+	Route::get('/inzendingen', 'AdminSubmissions@index');
+
 	// Login validatie
 	Route::post('/', 'Auth\AdminLoginController@checkLogin');
 
