@@ -72,3 +72,6 @@ Route::prefix('/admin')->group(function () {
 		Route::get('', 'AdminAccountController@index');
 	});
 });
+
+Route::get('/contact', 'Contact@index');
+Route::post('/contact', 'Contact@sendmail');
