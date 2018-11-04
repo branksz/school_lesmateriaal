@@ -18,4 +18,11 @@ class AdminSubmissions extends Controller
         $entries = \DB::table('subject_requests')->orderBy('id', 'desc')->limit(null)->get();
         return view('admin/submissions', ['entries' => $entries]);
     }
+
+    // al het materiaal ophalen en terug sturen met view
+    public function contact()
+    {
+        $entries = \DB::table('contact')->orderBy('id', 'desc')->limit(null)->get();
+        return view('admin/submissions', ['entries' => $entries, 'isContact' => true]);
+    }
 }

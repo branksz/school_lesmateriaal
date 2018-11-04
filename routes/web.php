@@ -63,6 +63,7 @@ Route::prefix('/admin')->group(function () {
 
 	// inzendingen
 	Route::get('/inzendingen', 'AdminSubmissions@index');
+	Route::get('/inzendingen/contact', 'AdminSubmissions@contact');
 
 	// Login validatie
 	Route::post('/', 'Auth\AdminLoginController@checkLogin');
@@ -72,3 +73,6 @@ Route::prefix('/admin')->group(function () {
 		Route::get('', 'AdminAccountController@index');
 	});
 });
+
+Route::get('/contact', 'Contact@index');
+Route::post('/contact', 'Contact@sendmail');
