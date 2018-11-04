@@ -23,6 +23,6 @@ class AdminSubmissions extends Controller
     public function contact()
     {
         $entries = \DB::table('contact')->orderBy('id', 'desc')->limit(null)->get();
-        return view('admin/submissions', ['entries' => $entries, 'contact' => true]);
+        return view('admin/submissions', ['entries' => $entries, 'isContact' => true]);
     }
 }
